@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bone Age Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🩻 Bone Age Prediction System</h1>
+            <p>Upload a hand X-ray image to predict skeletal age</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <form id="uploadForm" enctype="multipart/form-data">
+                    <div class="file-input-wrapper">
+                        <input type="file" id="imageInput" name="file" accept="image/*" required>
+                        <label for="imageInput" class="file-label">
+                            <span id="fileName">Choose an image...</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn-predict">Predict Bone Age</button>
+                </form>
+
+                <div id="imagePreview" class="image-preview"></div>
+            </div>
+
+            <div id="results" class="results hidden">
+                <h2>Prediction Results</h2>
+                <div class="result-card">
+                    <div class="result-item">
+                        <span class="label">Predicted Age:</span>
+                        <span class="value" id="predictedAge">-</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="label">In Years:</span>
+                        <span class="value" id="predictedYears">-</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="label">Confidence:</span>
+                        <span class="value" id="confidence">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Analyzing X-ray image...</p>
+            </div>
+
+            <div id="error" class="error hidden"></div>
+        </main>
+
+        <footer>
+            <p>Powered by TensorFlow & Xception CNN</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
